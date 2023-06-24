@@ -10,7 +10,7 @@
 }
 
 .facebookHeader {
-    color: rgb(57, 117, 234);
+    color: var(--facebook-color);
     font-size: 3.5rem;
     text-align: left;
     margin-bottom: 0;
