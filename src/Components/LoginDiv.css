@@ -1,8 +1,9 @@
 .container {
     background-color: white;
     border-radius: 5px;
-    height: 20rem;
-    width: 25rem
+    height: fit-content;
+    width: 25rem;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5); 
 }
 
 .form { 
@@ -16,30 +17,30 @@
     height: 3rem;
     border: rgb(217, 217, 217) solid 1px;
     border-radius: 5px;
-    margin-right: 0.3rem;
-    margin-left: 0.3rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
     font-size: 1rem;
     padding-left: 1rem;
 }
 
 .passwordInput {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     height: 3rem;
     border: rgb(217, 217, 217) solid 1px;
     border-radius: 5px;
-    margin-right: 0.3rem;
-    margin-left: 0.3rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
     font-size: 1rem;
     padding-left: 1rem;
 }
 
 .loginButton {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     height: 3rem;
     border: rgb(217, 217, 217) solid 1px;
     border-radius: 5px;
-    margin-right: 0.3rem;
-    margin-left: 0.3rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
     font-size: 1rem;
     padding-left: 1rem;
     background-color: var(--facebook-color);
@@ -48,4 +49,54 @@
     font-size: 1.3rem;
 }
 
+.passwordInput:focus, .emailInput:focus{
+    box-shadow: 0px 1px 5px 0px rgb(93, 117, 239); 
+    border: 0.5px solid blue;
+}
+
+.passwordInput:focus-visible, .emailInput:focus-visible {
+    outline: none;
+}
+
+.loginButton:hover, .forgotPassword:hover, .newAccount:hover {
+    cursor: pointer;
+}
+
+.forgotPassword {
+    color: var(--facebook-color);
+    text-align: center;
+    margin-top: 0;
+    font-weight: bold;
+    font-size: small;
+    margin-bottom: 1rem;
+    border-bottom: rgb(200, 199, 199) solid 1px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding-bottom: 1rem;
+}
+
+.forgotPassword:hover {
+    text-decoration: underline;
+}
+
+.newAccount {
+    background-color: rgb(94,169,63);
+    width: 14rem;
+    height: 3rem;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease; /* Add transition property */
+}
+
+.newAccount:hover {
+    background-color: rgb(71, 138, 42);
+    transition: background-color 0.3s;
+}
 
