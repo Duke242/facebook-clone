@@ -1,0 +1,23 @@
+.container {
+    background-color: white;
+    border-radius: 20px;
+    height: 20rem;
+    width: 20rem
+}
+
+.form { 
+    display: flex;
+    flex-direction: column;
+}
+
+.emailInput {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    height: 2rem;
+    border: rgb(217, 217, 217) solid 1px;
+    border-radius: 5px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    font-size: 1rem;
+    padding-left: 1rem;
+}
