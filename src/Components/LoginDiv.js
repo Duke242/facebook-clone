@@ -4,7 +4,7 @@ import './LoginDiv.css'
 function LoginDiv() {
   return (
     <div className='container'>
-      <form className='form'>
+      <form className='form' action=''>
         <input type='text' placeholder='Email or phone number' className='emailInput'/>
         <input type='password' placeholder='Password' className='passwordInput'/>
         <button className='loginButton'>Log In</button>

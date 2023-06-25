@@ -1,0 +1,133 @@
+* {
+    z-index: 1;
+}
+
+.overlay  {
+    position: fixed;
+    background: #d1d1d150;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.container {
+    height: 30rem;
+    width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7rem;
+}
+
+.signupHeader {
+    margin-bottom: 0;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-size: 34px;
+}
+
+.p1 {
+    color: gray;
+    padding-left: 1rem;
+    font-size: medium;
+    border-bottom: rgb(212, 212, 212) solid 1px;
+    padding-bottom: 1rem;
+}
+
+.xButton {
+    position: absolute;
+    left: 50rem;
+    color: gray;
+    top: 8rem;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    font-size: larger;
+
+}
+
+.firstName, .lastName {
+    height: 2rem;
+    width: 13rem;
+    background-color: rgb(240, 241, 242);
+    font-size: 1rem;
+    border:rgb(198, 198, 198) solid 1px;
+    border-radius: 5px;
+    padding-left: 0.7rem;
+}
+
+.firstName:focus-visible, .lastName:focus-visible {
+    outline: none;
+}
+
+
+.firstName {
+    margin-left: 11px;
+}
+
+.lastName {
+    margin-left: 11px;
+}
+
+.email, .password {
+    height: 2rem;
+    width: 27.75rem;
+    margin-left: 0.7rem;
+    margin-right: 1rem;
+    background-color: rgb(240, 241, 242);
+    font-size: 1rem;
+    border:rgb(198, 198, 198) solid 1px;
+    border-radius: 5px;
+    padding-left: 0.7rem;
+    margin-top: 1rem;
+}
+
+.birthday, .gender {
+    color: #606770;
+    font-family: SFProText-Medium, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px;
+    margin-bottom: 0;
+    margin-top: 5px;
+    padding-left: 0.7rem;
+}
+
+.month, .day, .birth-year {
+    border-radius: 4px;
+    color: #1c1e21;
+    font-family: SFProText-Medium, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    height: 36px;
+    line-height: 20px;
+    margin-left: 0.7rem;
+    width: 9.1rem;
+}
+
+.male, .female, .preferNot {
+    border: black solid 1px;
+    border-radius: 4px;
+    width: 7rem;
+    margin-left: 0.7rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    line-height: 36px;
+    display: inline-block;
+}
+
+.mdot, .fdot, .pdot {
+    position: relative;
+}
+
+.pdot {
+    left: 1.5rem;
+}
+
+.mdot {
+    left: 4rem;
+}
+
+.fdot {
+    left: 3rem;
+}
