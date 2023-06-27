@@ -9,14 +9,30 @@
     height: 100vh;
     top: 0;
     left: 0;
+    opacity: 0; 
+    animation: fade-in 0.3s ease-in forwards; 
+}
+  
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
-.container {
-    height: 30rem;
+
+.sign-up-container {
+    position: relative;
+    background-color: white;
+    height: 33rem;
     width: 30rem;
     margin-left: auto;
     margin-right: auto;
     margin-top: 7rem;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5); 
 }
 
 .signupHeader {
@@ -26,7 +42,7 @@
     font-size: 34px;
 }
 
-.p1 {
+.sign-up-p1 {
     color: gray;
     padding-left: 1rem;
     font-size: medium;
@@ -36,14 +52,18 @@
 
 .xButton {
     position: absolute;
-    left: 50rem;
+    right: 1rem;
+    top: 1rem;
     color: gray;
-    top: 8rem;
     font-weight: bold;
     border: none;
     background-color: white;
     font-size: larger;
 
+}
+
+.xButton:hover {
+    cursor: pointer;
 }
 
 .firstName, .lastName {
@@ -132,7 +152,32 @@
     left: 3rem;
 }
 
-.p2 {
+.sign-up-p2, .sign-up-p3 {
+    margin-left: 0.7rem;
     color: gray;
     font-size: 12px;
+    text-align: left;
+}
+
+.signupButton {
+    display: flex;
+    width: 12rem;
+    height: 2.5rem;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+    border: none;
+    background-color: rgb(73,162,46);
+    border-radius: 5px;
+    transition: background-color 0.3s ease; 
+}
+
+.signupButton:hover {
+    background-color: rgb(71, 138, 42);
+    transition: background-color 0.3s;
+    cursor: pointer;
 }

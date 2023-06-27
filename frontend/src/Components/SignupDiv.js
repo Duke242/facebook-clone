@@ -1,16 +1,16 @@
 import React from 'react'
 import './SignupDiv.css'
 
-function signupDiv() {
+function SignupDiv({handlePopup}) {
   return (
     <div className='overlay'>
-        <div className='container'>
-            <h1 className='signupHeader'>Sign Up </h1><button className='xButton'>X</button>
-            <p className='p1'>It’s quick and easy.</p>
+        <div className='sign-up-container'>
+            <h1 className='signupHeader'>Sign Up </h1><button className='xButton' onClick={handlePopup}>X</button>
+            <p className='sign-up-p1'>It’s quick and easy.</p>
             <input type='text' className='firstName' placeholder='First Name' /> 
             <input type='text' className='lastName' placeholder='Last Name' /> 
-            <input type='text' className='email' placeholder='Mobile number or email' />
-            <input type='text' className='password' placeholder='New password' />
+            <input type='number' className='email' placeholder='Mobile number or email' />
+            <input type='password' className='password' placeholder='New password' />
             <div className='birthday'>Birthday</div>
             <select className='month'>
                 <option value='1'>January</option>
@@ -89,13 +89,16 @@ function signupDiv() {
                 <label>Prefer Not</label>
                 <input type='radio' name='gender' value='not' className='pdot'/>
             </span>
-            <p className='p2'>People who use our service may have uploaded your contact information to Facebook. Learn more.
-                By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy. You may receive SMS Notifications from us and can opt out any time.
+            <p className='sign-up-p2'>People who use our service may have uploaded your contact information to Facebook. Learn more.
             </p>
+            <p className='sign-up-p3'>
+            By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy. You may receive SMS Notifications from us and can opt out any time.
+            </p>
+            <button className='signupButton'>Sign Up</button>
 
         </div>
     </div>
   )
 }
 
-export default signupDiv
+export default SignupDiv
