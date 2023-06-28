@@ -20,10 +20,10 @@ function DashboardHeader() {
       </div>
       <div className="rightside-container">
         <button className='rightside-findfriends'>Find Friends</button>
-        <button className='rightside-menu'><FaBars size={25}/></button>
-        <button className='rightside-messages'><FaCommentDots size={25}/></button>
-        <button className='rightside-notifactions'><FaBell size={25}/></button>
-        <button className='rightside-user'><FaUserAlt size={25}/></button>
+        <button className='rightside-menu'><FaBars size={18}/></button>
+        <button className='rightside-messages'><FaCommentDots size={18}/></button>
+        <button className='rightside-notifactions'><FaBell size={18}/></button>
+        <button className='rightside-user'><FaUserAlt size={18}/></button>
       </div>
     </header>
   )

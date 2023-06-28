@@ -1,6 +1,6 @@
 import React from 'react'
 import './Feed.css'
-import { FaPlus, FaUserAlt, FaVideo, FaPhotoVideo, FaSmile } from 'react-icons/fa'
+import { FaPlus, FaUserAlt, FaVideo, FaPhotoVideo, FaSmile, FaCamera } from 'react-icons/fa'
 
 
 function Feed() {
@@ -27,6 +27,9 @@ function Feed() {
           <button><FaPhotoVideo size={30}/> Photo/video</button>
           <button><FaSmile size={30}/> Feeling/activity</button>
         </div>
+      </div>
+      <div className='post-container-room'>
+        <button><FaCamera size={30}/>Create room</button>
       </div>
     </div>
   )
