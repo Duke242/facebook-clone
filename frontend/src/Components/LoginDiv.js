@@ -7,7 +7,7 @@ function LoginDiv({toggleSignup}) {
   return (
     <div className='container'>
       <form className='form' action='/api/login' method='POST'>
-        <input type='text' placeholder='Email or phone number' className='emailInput'/>
+        <input type='email' placeholder='Email' className='emailInput'/>
         <input type='password' placeholder='Password' className='passwordInput'/>
         <button className='loginButton'>Log In</button>
         <p className='forgotPassword'><a>Forgot password?</a></p>

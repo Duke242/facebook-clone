@@ -181,3 +181,7 @@
     transition: background-color 0.3s;
     cursor: pointer;
 }
+
+.dateSelector {
+    margin-left: 0.7rem;
+}
