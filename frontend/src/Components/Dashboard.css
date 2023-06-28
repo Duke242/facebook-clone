@@ -1,5 +1,13 @@
 .dashboard-main {
   background-color: rgb(241, 242, 245);
-  height: 100vh;
+  height: max-content;
   width: 100vw;
+  flex: 0.6;
+  overflow-y: scroll;
 }
+
+.main-page-container {
+  display: flex;
+}
+
+

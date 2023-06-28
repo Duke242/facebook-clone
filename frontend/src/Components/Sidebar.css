@@ -1,0 +1,24 @@
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  flex: 0.3;
+  height: 100vh;
+  flex: 0.25;
+  overflow-y: scroll;
+
+}
+
+li {
+  list-style: none;
+  font-size: 1rem;
+  font-weight: 450;
+  border-radius: 5px;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+  padding-left: 0.4rem;
+}
+
+li:hover {
+  background-color:rgb(230, 230, 230) ;
+  cursor: pointer;
+}

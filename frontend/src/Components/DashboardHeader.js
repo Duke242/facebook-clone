@@ -1,7 +1,9 @@
 import React from 'react'
 import './DashboardHeader.css'
 import { SocialIcon } from 'react-social-icons';
-import { FaSearch, FaHome } from 'react-icons/fa'
+import { FaSearch, FaHome, FaUserFriends, FaUsers, FaCommentDots, FaBell,
+  FaBars, FaUserAlt
+ } from 'react-icons/fa'
  
 
 function DashboardHeader() {
@@ -12,10 +14,16 @@ function DashboardHeader() {
         <input type="text" placeholder= '&#128269; Search Facebook' className='dashboard-search'/>
       </div>
       <div className="center-container">
-        <FaHome size={45} className='dashboard-home-icon' />
+        <FaHome size={45} color='lightgray' className='dashboard-home-icon' />
+        <FaUserFriends size={45} color='lightgray' className='dashboard-friends-icon' />
+        <FaUsers size={45} color='lightgray' className='dashboard-groups-icon' />
       </div>
       <div className="rightside-container">
-        Right
+        <button className='rightside-findfriends'>Find Friends</button>
+        <button className='rightside-menu'><FaBars size={25}/></button>
+        <button className='rightside-messages'><FaCommentDots size={25}/></button>
+        <button className='rightside-notifactions'><FaBell size={25}/></button>
+        <button className='rightside-user'><FaUserAlt size={25}/></button>
       </div>
     </header>
   )

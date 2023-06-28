@@ -3,6 +3,9 @@ import './Dashboard.css'
 import Markdown from 'react-markdown'
 import { useQuery } from '@tanstack/react-query'
 import DashboardHeader from './DashboardHeader'
+import Sidebar from './Sidebar'
+import Rightside from './Rightside'
+import Feed from './Feed'
 
 function Dashboard() {
 
@@ -21,6 +24,12 @@ console.log({ response })
   return (
     <main className='dashboard-main'>
       <DashboardHeader /> 
+      <div className='main-page-container'>
+        <Sidebar />
+        <Feed />
+        <Rightside />
+      </div>
+      
       {/* {response.isLoading ? (
         <div>Loading</div>
       ) : (

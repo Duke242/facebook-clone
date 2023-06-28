@@ -2,6 +2,13 @@
   background-color: white;
   display: flex;
   justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5); 
+  position: sticky;
+  top: 0;
+  position: -webkit-sticky; 
+  z-index: 1;
 }
 
 .leftside-container {
@@ -22,4 +29,61 @@
 .center-container {
   display: flex;
   align-items: center;
+  gap: 2rem;
+}
+
+.dashboard-groups-icon,
+.dashboard-home-icon,
+.dashboard-friends-icon {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.dashboard-groups-icon:hover,
+.dashboard-home-icon:hover,
+.dashboard-friends-icon:hover {
+  background-color: rgb(241, 241, 241);
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.rightside-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rightside-findfriends {
+  align-items: center;
+  display: flex;
+  height: 2rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: 0.3s ease;
+
+}
+
+.rightside-menu,
+.rightside-messages,
+.rightside-notifactions,
+.rightside-user {
+  border: none;
+  border-radius: 50%;
+  padding: 0.5rem;
+  transition: 0.3s ease;
+  height: fit-content;
+}
+
+.rightside-menu:hover,
+.rightside-messages:hover,
+.rightside-notifactions:hover,
+.rightside-user:hover,
+.rightside-findfriends:hover {
+  background-color: rgb(214, 214, 214);
+  cursor: pointer;
+  transition: 0.3s;
 }
