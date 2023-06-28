@@ -4,6 +4,7 @@
   flex: 0.50;
   margin-top: 2rem;
   flex-direction: column;
+  padding-left: 5rem;
 }
 
 .create-story {

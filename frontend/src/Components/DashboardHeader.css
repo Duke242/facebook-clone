@@ -88,3 +88,8 @@
   cursor: pointer;
   transition: 0.3s;
 }
+
+.icon--active {
+  color: rgb(64, 144, 230);
+}
+

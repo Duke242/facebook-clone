@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './DashboardHeader.css'
 import { SocialIcon } from 'react-social-icons';
 import { FaSearch, FaHome, FaUserFriends, FaUsers, FaCommentDots, FaBell,
@@ -7,6 +7,7 @@ import { FaSearch, FaHome, FaUserFriends, FaUsers, FaCommentDots, FaBell,
  
 
 function DashboardHeader() {
+
   return (
     <header className='dashboard-header'>
       <div className="leftside-container">
@@ -28,5 +29,5 @@ function DashboardHeader() {
     </header>
   )
 }
-
+// {`sidebarOption ${active && 'sidebarOption--active'}`}
 export default DashboardHeader
