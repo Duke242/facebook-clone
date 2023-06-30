@@ -4,7 +4,8 @@ import { FaPlus, FaUserAlt, FaVideo, FaPhotoVideo, FaSmile, FaCamera,
   FaEllipsisH, FaTimes, FaThumbsUp, FaComment, FaShare } from 'react-icons/fa'
 
 
-function Feed() {
+
+function Feed({handlePopup}) {
   return (
     <div className='feed-container'>
       <div className='create-story'>
@@ -19,7 +20,7 @@ function Feed() {
       <div className='post-container'>
         <div className='post-container-top'>
           <FaUserAlt size={40} color='#0092ED'/> 
-          <span className='post-text-container'>
+          <span className='post-text-container' onClick={handlePopup}>
             What's on your mind, User?
           </span>
         </div>
@@ -35,7 +36,105 @@ function Feed() {
       <div className='other-post-container'>
         <div className='other-post-container-author'>
           <FaUserAlt size={35} color='#0092ED' />
-          <div class='other-post-name-time'>
+          <div className='other-post-name-time'>
+            <h5>author name</h5>
+            <p>time posted</p>
+          </div>
+          <div className='other-post-icons'>
+            <button><FaEllipsisH size={25} color='gray'/></button>
+            <button><FaTimes size={25} color='gray'/></button>
+          </div>
+        </div>
+        <div className='other-post-textarea'>
+          <p>Post text</p>
+        </div>
+        <div className='other-post-media'>
+          media
+        </div>
+        <div className='other-post-likes'>
+        <div>0 likes</div>
+        <div>
+          <span>0 comments</span>
+          <span>0 shares</span>
+        </div>
+        </div>
+        <div className='other-posts-buttons'>
+          <button><FaThumbsUp/>Like</button>
+          <button><FaComment/>Comments</button>
+          <button><FaShare/>Share</button>
+        </div>
+      </div>
+      <div className='other-post-container'>
+        <div className='other-post-container-author'>
+          <FaUserAlt size={35} color='#0092ED' />
+          <div className='other-post-name-time'>
+            <h5>author name</h5>
+            <p>time posted</p>
+          </div>
+          <div className='other-post-icons'>
+          <button><FaEllipsisH size={25} color='gray'/></button>
+          <button><FaTimes size={25} color='gray'/></button>
+          </div>
+        </div>
+        <div className='other-post-textarea'>
+          <p>Post text</p>
+        </div>
+        <div className='other-post-media'>
+          media
+        </div>
+        <div className='other-post-likes'>
+        <div>0 likes</div>
+        <div>
+          <span>0 comments</span>
+          <span>0 shares</span>
+        </div>
+        </div>
+        <div className='other-posts-buttons'>
+          <button><FaThumbsUp/>Like</button>
+          <button><FaComment/>Comments</button>
+          <button><FaShare/>Share</button>
+        </div>
+      </div>
+
+
+
+      <div className='other-post-container'>
+        <div className='other-post-container-author'>
+          <FaUserAlt size={35} color='#0092ED' />
+          <div className='other-post-name-time'>
+            <h5>author name</h5>
+            <p>time posted</p>
+          </div>
+          <div className='other-post-icons'>
+          <button><FaEllipsisH size={25} color='gray'/></button>
+          <button><FaTimes size={25} color='gray'/></button>
+          </div>
+        </div>
+        <div className='other-post-textarea'>
+          <p>Post text</p>
+        </div>
+        <div className='other-post-media'>
+          media
+        </div>
+        <div className='other-post-likes'>
+        <div>0 likes</div>
+        <div>
+          <span>0 comments</span>
+          <span>0 shares</span>
+        </div>
+        </div>
+        <div className='other-posts-buttons'>
+          <button><FaThumbsUp/>Like</button>
+          <button><FaComment/>Comments</button>
+          <button><FaShare/>Share</button>
+        </div>
+      </div>
+
+
+      <div className='other-post-container'>
+        <div className='other-post-container-author'>
+          <FaUserAlt size={35} color='#0092ED' />
+          <div className='other-post-name-time'>
             <h5>author name</h5>
             <p>time posted</p>
           </div>
@@ -64,6 +163,8 @@ function Feed() {
         </div>
       </div>
     </div>
+
+
   )
 }
 

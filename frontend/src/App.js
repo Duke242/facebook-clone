@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Dashboard from './Components/Dashboard';
 import { BrowserRouter } from "react-router-dom";
+import CreatePost from './Components/CreatePost';
 
 
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" >
             <Route index element= {<LoginPage />} />
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="createPost" element={<CreatePost />} />
           </Route>
         </Routes>
       </BrowserRouter>

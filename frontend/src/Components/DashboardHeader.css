@@ -11,10 +11,6 @@
   z-index: 1;
 }
 
-.leftside-container {
-
-}
-
 .dashboard-search {
   width: 14rem;
   margin-left: 1rem;
@@ -23,6 +19,7 @@
   border: none;
   background-color: rgb(240, 240, 240);
   padding-left: 1rem;
+  padding-right: 1rem;
   font-size: 16px;
 }
 

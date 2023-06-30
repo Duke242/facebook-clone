@@ -10,7 +10,6 @@ function LoginPage() {
   const [signupDivDisplayed, setSignupDivDisplayed] = useState(false)
 
   const toggleSignup = (e) => {
-    console.log('toggle')
     e.preventDefault()
     setSignupDivDisplayed(!signupDivDisplayed)
   };
