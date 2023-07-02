@@ -5,7 +5,7 @@
   margin-top: 2rem;
   flex-direction: column;
   padding-left: 5rem;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .create-story {
@@ -282,7 +282,8 @@
   width: 90%;
   display: flex;
   justify-content: space-between;
-
+  border-bottom: rgb(188, 188, 188) solid 1px;
+  margin-bottom: 1rem;
 }
 
 .other-posts-buttons > button {
@@ -303,5 +304,75 @@
 .other-posts-buttons > button:hover {
   background-color: rgb(215, 215, 215);
   cursor: pointer;
-  
 }
+
+.other-post-comment-box {
+  display: flex;
+  width: 100%;
+  margin-left: 1rem;
+  gap: .3rem;
+}
+
+.other-post-comment-box > input {
+  width: 91%;
+  border: none;
+  background-color: rgb(240, 242, 245);
+  height: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: .7rem;
+  font-size: 1rem;
+  padding: 0.3rem 0 0.3rem 0.3rem;
+}
+
+.other-post-comments {
+  display: flex;
+  width: 100%;
+  margin-left: 1rem;
+  gap: .3rem;
+}
+
+.other-post-comments-header {
+  width: fit-content;
+  border: none;
+  background-color: rgb(240, 242, 245);
+  height: fit-content;
+  border-radius: 10px;
+  margin-bottom: .1rem;
+  display: flex;
+  padding: .3rem .6rem .3rem ;
+  gap: .3rem;
+  align-items: center;
+}
+
+.other-post-comments-header > span {
+  display: flex;
+  flex-direction: column;
+}
+
+.other-post-comments-author {
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.other-post-like-share { 
+  margin-bottom: .5rem;
+  display: flex;
+  align-items: center;
+}
+
+.other-post-like-share > button { 
+  border: none;
+  background-color: white;
+  font-weight: 600;
+}
+
+.other-post-like-share > button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.other-post-like-share > span {
+  color: rgb(128, 128, 128);
+  font-size: 12px;
+  margin-left: .7rem;
+} 
