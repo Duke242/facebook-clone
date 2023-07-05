@@ -77,16 +77,23 @@
   padding-top: 0;
 }
 
-.create-post-text > textarea {
-  height: 5rem;
+.create-post-text {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
   width: 92%;
   max-width: 92%;
-  margin-left: 1rem;
   border-radius: 10px;
-  border: rgb(209, 209, 209) solid 1px;
   font-size: 1rem;
   border: none;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.create-post-text > form > textarea {
+  max-width: 100%;
+  width: 100%;
+  resize: vertical;
+  height: 3rem;
+  font-size: 1rem;
 }
 
 .create-post-text > input:focus-visible { 

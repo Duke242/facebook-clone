@@ -8,8 +8,6 @@ import { FaSearch, FaHome, FaUserFriends, FaUsers, FaCommentDots, FaBell,
 
 function DashboardHeader() {
 
-  const [active, setActive] = useState(true)
-
   return (
     <header className='dashboard-header'>
       <div className="leftside-container">
@@ -20,7 +18,6 @@ function DashboardHeader() {
         <FaHome size={45} color='lightgray' active className='dashboard-home-icon' />
         <FaUserFriends size={45} color='lightgray' className='dashboard-friends-icon' />
         <FaUsers size={45} color='lightgray' className='dashboard-groups-icon' />
-        {/* className={`sidebarOption ${active && 'sidebarOption--active'}` */}
       </div>
       <div className="rightside-container">
         <button className='rightside-findfriends'>Find Friends</button>

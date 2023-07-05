@@ -17,13 +17,15 @@ function CreatePost({handlePopup}) {
           </div>
         </div>
         <div className='create-post-text'>
-          <textarea type='text' placeholder="What's on your mind, User?"/>
+          <form action='/api/post' id='post-form' method='POST'>
+           <textarea type='text' placeholder="What's on your mind, User?" name='text'/>
+          </form>
         </div>
-        <button className='create-post-button'>
+        <button className='create-post-button' form='post-form'>
           Post
         </button>
       </div>
-    </div>
+    </div> 
   )
 }
 
