@@ -6,24 +6,24 @@ const mongoose = require('mongoose')
 
 
 
+
 setup(mongoose)
 const User = mongoose.model('user')
 
-function initialize(passport) {
+function initialize() {
   console.log("In initialize.")
 
   passport.use(new LocalStrategy(
     { usernameField: 'email', // Assuming email is the field for username
       }, async (email, password, done) => {
     try {
-      
+      console.log("searching for user...")
       const user = await User.findOne({ email });
       console.log({ user })
       if (!user) {
         return done(null, false, { message: "Incorrect email" });
       };
       const res = await bcrypt.compare(password, user.password)
-      console.log({ res })
       if (res) {
         // passwords match! log user in
         console.log('password match')
@@ -54,6 +54,9 @@ function initialize(passport) {
   });
 
 }
+
+
+
 
 
 module.exports = { initialize }

@@ -21,10 +21,9 @@ function setup(mongoose){
 
       const PostSchema = 
         new Schema({
-          title: { type: String, required: true },
           text: { type: String, required: true },
           author: { type: Schema.Types.ObjectId, ref: 'user', required: true },
-          timeStamp: { type: String, required: true },
+          likes: { type: Number, default: 0, required: true },
         }, { timestamps: true })
       
 
