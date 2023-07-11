@@ -15,14 +15,14 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-            <Route element={<PrivateRoutes /> }>
-              <Route path='/dashboard' element={<Dashboard />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path='/dashboard' element={<Dashboard />} />
           </Route>
-          <Route exact path='/' element={<LoginPage  /> } /> 
+          <Route exact path='/' element={<LoginPage />} />
           <Route path='/login' element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
-    </QueryClientProvider>  
+    </QueryClientProvider>
   );
 }
 

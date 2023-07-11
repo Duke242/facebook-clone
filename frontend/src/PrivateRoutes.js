@@ -1,30 +1,16 @@
-// PrivateRoutes.js
-import { Navigate, Outlet } from "react-router-dom";
-import cookie from 'react-cookie'
-import { useState } from "react"
 
+import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRoutes = () => {
 
-  
   let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)sid\s*\=\s*([^;]*).*$)|^.*$/, "\$1");
-  console.log({cookieValue})
+  console.log({ cookieValue })
+  console.log({ c: document.cookie })
 
-  const [auth, setAuth] = useState(false)
-
-  if (auth === true) {
-    return (
-      auth ? <Outlet/> : < Navigate to='/login'/>
-    )
-  }
-
-  if (cookieValue !== "") {
-    setAuth(true)
-    console.log({auth})
-  }
+  const auth = cookieValue !== ''
 
   return (
-    auth ? <Outlet/> : < Navigate to='/login'/>
+    auth ? <Outlet /> : < Navigate to='/login' />
   )
 }
 

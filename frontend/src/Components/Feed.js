@@ -1,14 +1,16 @@
 import React from 'react'
 import './Feed.css'
-import { FaPlus, FaUserAlt, FaVideo, FaPhotoVideo, FaSmile, FaCamera,
-  FaEllipsisH, FaTimes, FaThumbsUp, FaComment, FaShare, FaUser } from 'react-icons/fa'
+import { FaPlus, FaUserAlt, FaVideo, FaPhotoVideo, FaSmile, FaCamera } from 'react-icons/fa'
 import { useQuery } from '@tanstack/react-query'
-import Markdown from 'react-markdown'
 import Post from './Post.js'
 
 
-function Feed({handlePopup}) {
 
+function Feed({ handlePopup }) {
+
+
+  let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)sid\s*\=\s*([^;]*).*$)|^.*$/, "\$1");
+  console.log({ cookieValue })
 
   const response = useQuery({
     queryKey: ['posts'],
@@ -20,6 +22,8 @@ function Feed({handlePopup}) {
       return response.json()
     },
   })
+  console.log({ response })
+  console.log({ ps: response.data })
 
   return (
     <div className='feed-container'>
@@ -34,37 +38,40 @@ function Feed({handlePopup}) {
       </div>
       <div className='post-container'>
         <div className='post-container-top'>
-          <FaUserAlt size={40} color='#0092ED'/> 
+          <FaUserAlt size={40} color='#0092ED' />
           <span className='post-text-container' onClick={handlePopup}>
             What's on your mind, User?
           </span>
         </div>
         <div className='post-container-bottom'>
-          <button><FaVideo size={30}/>Live Video</button>
-          <button><FaPhotoVideo size={30}/> Photo/video</button>
-          <button><FaSmile size={30}/> Feeling/activity</button>
+          <button><FaVideo size={30} />Live Video</button>
+          <button><FaPhotoVideo size={30} /> Photo/video</button>
+          <button><FaSmile size={30} /> Feeling/activity</button>
         </div>
       </div>
       <div className='post-container-room'>
-        <button><FaCamera size={30}/>Create room</button>
+        <button><FaCamera size={30} />Create room</button>
       </div>
 
-      {response.isLoading ? (
-        <div>Loading</div>
-        ) : (
-        response.isError ? (
-        <div>{response.error.message}</div>
-        ) : (
-        response.data.posts.map((post) => (
+      {(() => {
+        if (response.isLoading) {
+          return <div>Loading</div>
+        }
+        if (response.isError) {
+          return <div>{response.error.message}</div>
+        }
+        if (response.data.length === 0) {
+          return <div>No posts posted.</div>
+        }
+        return response.data.map((post, idx) => (
           <Post
-          text={post.text}
-          author={post.author}
-          timestamp={post.timestamp}
-          likes={post.likes} />
-          
+            key={idx}
+            text={post.text}
+            author={post.author.firstName}
+            timestamp={post.timestamp}
+            likes={post.likes} />
         ))
-        )
-      )}
+      })()}
     </div>
   )
 }
