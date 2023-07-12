@@ -1,0 +1,8 @@
+.friends-page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.friends-page-container>div {
+  display: flex;
+}

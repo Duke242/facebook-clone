@@ -5,11 +5,14 @@ import {
   FaSearch, FaHome, FaUserFriends, FaUsers, FaCommentDots, FaBell,
   FaBars, FaUserAlt
 } from 'react-icons/fa'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Tooltip, TooltipTrigger, TooltipContent } from "./Tooltip";
 
 
+
 function DashboardHeader() {
+
+  const navigate = useNavigate()
 
   const location = useLocation()
   console.log({ location })
@@ -19,7 +22,6 @@ function DashboardHeader() {
 
   return (
     <header className='dashboard-header'>
-      {/* <FaSearch /> */}
       <div className="leftside-container">
         <SocialIcon url="https://facebook.com" bgColor='#0092ED' />
         <input type="text" placeholder='&#xf002; Search Facebook' className='dashboard-search fa-search' />      </div>
@@ -30,6 +32,8 @@ function DashboardHeader() {
               size={45}
               color={dashboard ? 'var(--facebook-color)' : 'lightgray'}
               className={`${dashboard ? 'active' : ''} dashboard-icon`}
+              onClick={() => { navigate('/dashboard') }}
+
             />
           </TooltipTrigger>
           <TooltipContent className="Tooltip">Home</TooltipContent>
@@ -40,6 +44,7 @@ function DashboardHeader() {
               size={45}
               color={friends ? 'var(--facebook-color)' : 'lightgray'}
               className={`${friends ? 'active' : ''} dashboard-icon`}
+              onClick={() => { navigate('/friends') }}
             />
           </TooltipTrigger>
           <TooltipContent className="Tooltip">Friends</TooltipContent>
@@ -58,11 +63,11 @@ function DashboardHeader() {
 
       </div>
       <div className="rightside-container">
-        <button className='rightside-findfriends'>Find Friends</button>
-        <button className='rightside-menu'><FaBars size={18} /></button>
-        <button className='rightside-messages'><FaCommentDots size={18} /></button>
-        <button className='rightside-notifactions'><FaBell size={18} /></button>
-        <button className='rightside-user'><FaUserAlt size={18} /></button>
+        <button id={`${friends ? 'active' : ''} rightFindFriends`} className={`${friends ? 'active' : ''} rightside-findfriends`}>Find Friends</button>
+        <button id='rightButtons' className='rightside-menu'><FaBars size={18} /></button>
+        <button id='rightButtons' className='rightside-messages'><FaCommentDots size={18} /></button>
+        <button id='rightButtons' className='rightside-notifactions'><FaBell size={18} /></button>
+        <button id='rightButtons' className='rightside-user'><FaUserAlt size={18} /></button>
       </div>
     </header>
   )

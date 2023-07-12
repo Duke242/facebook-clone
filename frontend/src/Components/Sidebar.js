@@ -7,18 +7,18 @@ function Sidebar({ user }) {
   return (
     <div className='sidebar-container'>
       <ul className='sidebar-list'>
-        <li>{user?.firstName} {user?.lastName}</li>
-        <li>Find friends</li>
-        <li>Feeds (Most Recent)</li>
-        <li>Welcome</li>
-        <li>Groups</li>
-        <li>Marketplace</li>
-        <li>Watch</li>
-        <li>Memories</li>
-        <li>Saved</li>
-        <li>Pages</li>
-        <li>News</li>
-        <li>See more</li>
+        <li className='sidebar-li'>{user?.firstName} {user?.lastName}</li>
+        <li className='sidebar-li'>Find friends</li>
+        <li className='sidebar-li'>Feeds (Most Recent)</li>
+        <li className='sidebar-li'>Welcome</li>
+        <li className='sidebar-li'>Groups</li>
+        <li className='sidebar-li'>Marketplace</li>
+        <li className='sidebar-li'>Watch</li>
+        <li className='sidebar-li'>Memories</li>
+        <li className='sidebar-li'>Saved</li>
+        <li className='sidebar-li'>Pages</li>
+        <li className='sidebar-li'>News</li>
+        <li className='sidebar-li'>See more</li>
       </ul>
     </div>
   )
