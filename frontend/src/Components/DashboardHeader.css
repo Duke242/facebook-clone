@@ -94,24 +94,27 @@
   width: 2.3rem;
 }
 
-.rightside-menu:hover,
-.rightside-messages:hover,
-.rightside-notifactions:hover,
-.rightside-user:hover,
-.rightside-findfriends:hover {
-  background-color: rgb(214, 214, 214);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
 .icon--active {
   color: #4090e6;
 }
 
 #rightFindFriends {
-  background-color: rgb(228, 230, 234);
+  background-color: rgb(228, 230, 234) !important;
+}
+
+#rightFindFriends:hover {
+  background-color: rgb(214, 214, 214);
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 #rightButtons {
   background-color: rgb(228, 230, 234);
+  transition: 0.3s ease;
+}
+
+#rightButtons:hover {
+  background-color: rgb(214, 214, 214);
+  cursor: pointer;
+  transition: 0.3s;
 }

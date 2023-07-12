@@ -63,7 +63,7 @@ function DashboardHeader() {
 
       </div>
       <div className="rightside-container">
-        <button id={`${friends ? 'active' : ''} rightFindFriends`} className={`${friends ? 'active' : ''} rightside-findfriends`}>Find Friends</button>
+        <button id='rightFindFriends' className={`${friends ? 'active' : ''} rightside-findfriends`}>Find Friends</button>
         <button id='rightButtons' className='rightside-menu'><FaBars size={18} /></button>
         <button id='rightButtons' className='rightside-messages'><FaCommentDots size={18} /></button>
         <button id='rightButtons' className='rightside-notifactions'><FaBell size={18} /></button>
