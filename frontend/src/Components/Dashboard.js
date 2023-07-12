@@ -35,7 +35,7 @@ function Dashboard() {
       {createPost && <CreatePost handlePopup={togglePost} {...{ user }} />}
       <DashboardHeader />
       <div className='main-page-container'>
-        <Sidebar />
+        <Sidebar {...{ user }} />
         <Feed handlePopup={togglePost} />
         <Rightside />
       </div>

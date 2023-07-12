@@ -5,20 +5,57 @@ import {
   FaSearch, FaHome, FaUserFriends, FaUsers, FaCommentDots, FaBell,
   FaBars, FaUserAlt
 } from 'react-icons/fa'
+import { useLocation } from 'react-router-dom';
+import { Tooltip, TooltipTrigger, TooltipContent } from "./Tooltip";
 
 
 function DashboardHeader() {
 
+  const location = useLocation()
+  console.log({ location })
+  const dashboard = location.pathname === '/dashboard'
+  const friends = location.pathname === '/friends'
+  const groups = location.pathname === '/groups'
+
   return (
     <header className='dashboard-header'>
+      {/* <FaSearch /> */}
       <div className="leftside-container">
         <SocialIcon url="https://facebook.com" bgColor='#0092ED' />
-        <input type="text" placeholder='&#128269; Search Facebook' className='dashboard-search' />
-      </div>
+        <input type="text" placeholder='&#xf002; Search Facebook' className='dashboard-search fa-search' />      </div>
       <div className="center-container">
-        <FaHome size={45} color='lightgray' className='dashboard-home-icon' />
-        <FaUserFriends size={45} color='lightgray' className='dashboard-friends-icon' />
-        <FaUsers size={45} color='lightgray' className='dashboard-groups-icon' />
+        <Tooltip>
+          <TooltipTrigger>
+            <FaHome
+              size={45}
+              color={dashboard ? 'var(--facebook-color)' : 'lightgray'}
+              className={`${dashboard ? 'active' : ''} dashboard-icon`}
+            />
+          </TooltipTrigger>
+          <TooltipContent className="Tooltip">Home</TooltipContent>
+        </Tooltip>
+        <Tooltip>
+          <TooltipTrigger>
+            <FaUserFriends
+              size={45}
+              color={friends ? 'var(--facebook-color)' : 'lightgray'}
+              className={`${friends ? 'active' : ''} dashboard-icon`}
+            />
+          </TooltipTrigger>
+          <TooltipContent className="Tooltip">Friends</TooltipContent>
+        </Tooltip>
+        <Tooltip>
+          <TooltipTrigger>
+            <FaUsers
+              size={45}
+              color={groups ? 'var(--facebook-color)' : 'lightgray'}
+              className={`${groups ? 'active' : ''} dashboard-icon`}
+            />
+          </TooltipTrigger>
+          <TooltipContent className="Tooltip">Groups</TooltipContent>
+        </Tooltip>
+
+
       </div>
       <div className="rightside-container">
         <button className='rightside-findfriends'>Find Friends</button>

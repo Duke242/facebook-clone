@@ -1,17 +1,22 @@
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
 .dashboard-header {
   background-color: white;
   display: flex;
   justify-content: space-between;
   padding-left: 1rem;
   padding-right: 1rem;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5); 
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
   position: sticky;
   top: 0;
-  position: -webkit-sticky; 
+  position: -webkit-sticky;
   z-index: 1;
 }
 
+
+
 .dashboard-search {
+  font-family: 'FontAwesome', Arial;
   width: 14rem;
   margin-left: 1rem;
   height: 2.3rem;
@@ -23,26 +28,36 @@
   font-size: 16px;
 }
 
+.dashboard-search:focus-visible {
+  outline: none;
+}
+
 .center-container {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
 
-.dashboard-groups-icon,
-.dashboard-home-icon,
-.dashboard-friends-icon {
+.dashboard-icon {
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-.dashboard-groups-icon:hover,
-.dashboard-home-icon:hover,
-.dashboard-friends-icon:hover {
+.dashboard-header button {
+  border: none;
+  background-color: white;
+}
+
+.dashboard-icon.active {
+  border-bottom: 2px solid var(--facebook-color);
+}
+
+.dashboard-icon:hover {
   background-color: rgb(241, 241, 241);
   cursor: pointer;
   transition: 0.3s;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .rightside-container {
@@ -89,4 +104,3 @@
 .icon--active {
   color: #4090e6;
 }
-

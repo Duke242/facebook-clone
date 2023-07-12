@@ -1,11 +1,13 @@
 import React from 'react'
 import './Sidebar.css'
 
-function Sidebar() {
+function Sidebar({ user }) {
+
+  console.log(user)
   return (
     <div className='sidebar-container'>
       <ul className='sidebar-list'>
-        <li>Users Name</li>
+        <li>{user?.firstName} {user?.lastName}</li>
         <li>Find friends</li>
         <li>Feeds (Most Recent)</li>
         <li>Welcome</li>
