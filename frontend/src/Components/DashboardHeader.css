@@ -10,7 +10,7 @@
   position: sticky;
   top: 0;
   position: -webkit-sticky;
-  z-index: 3;
+  z-index: 2;
 }
 
 .dashboard-search {
@@ -78,7 +78,7 @@
 }
 
 .rightside-findfriends.active {
-  background-color: rgb(233, 243, 254);
+  background-color: rgb(233, 243, 254) !important;
   color: rgb(57, 117, 234);
 }
 
@@ -99,7 +99,7 @@
 }
 
 #rightFindFriends {
-  background-color: rgb(228, 230, 234) !important;
+  background-color: rgb(228, 230, 234);
 }
 
 #rightFindFriends:hover {
