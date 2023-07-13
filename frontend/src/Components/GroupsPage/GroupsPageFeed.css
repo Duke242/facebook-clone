@@ -1,0 +1,6 @@
+.groups-page-feed {
+  background-color: rgb(240, 242, 245);
+  display: flex;
+  flex: 0.75;
+  height: 100vh;
+}

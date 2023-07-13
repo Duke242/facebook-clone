@@ -6,7 +6,7 @@ import Dashboard from './Components/Dashboard';
 import { BrowserRouter } from "react-router-dom";
 import PrivateRoutes from './PrivateRoutes';
 import FriendsPage from './Components/FriendsPage/FriendsPage';
-
+import GroupsPage from './Components/GroupsPage/GroupsPage';
 
 const queryClient = new QueryClient()
 
@@ -19,6 +19,7 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/friends' element={<FriendsPage />} />
+            <Route path='/groups' element={<GroupsPage />} />
           </Route>
           <Route exact path='/' element={<LoginPage />} />
           <Route path='/login' element={<LoginPage />} />

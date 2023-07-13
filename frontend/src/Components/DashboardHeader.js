@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+
 import './DashboardHeader.css'
 import { SocialIcon } from 'react-social-icons';
 import {
@@ -24,7 +24,8 @@ function DashboardHeader() {
     <header className='dashboard-header'>
       <div className="leftside-container">
         <SocialIcon url="https://facebook.com" bgColor='#0092ED' />
-        <input type="text" placeholder='&#xf002; Search Facebook' className='dashboard-search fa-search' />      </div>
+        <input type="text" placeholder='&#xf002; Search Facebook' className='dashboard-search fa-search' />
+      </div>
       <div className="center-container">
         <Tooltip>
           <TooltipTrigger>
@@ -55,6 +56,7 @@ function DashboardHeader() {
               size={45}
               color={groups ? 'var(--facebook-color)' : 'lightgray'}
               className={`${groups ? 'active' : ''} dashboard-icon`}
+              onClick={() => { navigate('/groups') }}
             />
           </TooltipTrigger>
           <TooltipContent className="Tooltip">Groups</TooltipContent>
