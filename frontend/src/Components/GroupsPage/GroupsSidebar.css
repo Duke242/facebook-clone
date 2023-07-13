@@ -60,6 +60,12 @@
   margin-right: 1rem;
 }
 
+.groups-sidebar>button:hover {
+  cursor: pointer;
+  transition: 0.3s ease;
+  background-color: rgb(212, 231, 251);
+}
+
 .groups-sidebar>div {
   display: flex;
   align-items: center;
@@ -73,6 +79,13 @@
   border: none;
   color: rgb(71, 119, 215);
   margin-left: auto;
+}
+
+.groups-sidebar>div>button:hover {
+  background-color: rgb(237, 237, 237);
+  transition: 0.3s ease;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .groups-sidebar>div>h3 {
