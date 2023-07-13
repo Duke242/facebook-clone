@@ -6,7 +6,7 @@
   background-color: white;
   border-radius: 10px;
   flex-direction: column;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5); 
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
   margin-bottom: 1rem;
 }
 
@@ -24,12 +24,12 @@
   margin-left: .5rem;
 }
 
-.other-post-name-time > h5 {
+.other-post-name-time>h5 {
   margin-bottom: 0;
   margin-top: 0;
 }
 
-.other-post-name-time > p {
+.other-post-name-time>p {
   margin-bottom: 0;
   margin-top: 0;
   color: rgb(162, 162, 162);
@@ -43,12 +43,12 @@
   display: flex;
 }
 
-.other-post-icons > button {
+.other-post-icons>button {
   border: none;
   background-color: white;
 }
 
-.other-post-icons > button:hover {
+.other-post-icons>button:hover {
   cursor: pointer;
 }
 
@@ -59,7 +59,7 @@
   width: 100%;
 }
 
-.other-post-textarea > p {
+.other-post-textarea>p {
   margin-top: 0.3rem;
 }
 
@@ -80,13 +80,13 @@
   padding-top: 0.4rem;
 }
 
-.other-post-likes > div > span {
+.other-post-likes>div>span {
   display: flex;
   gap: 0.5rem;
 
 }
 
-.other-post-likes > div {
+.other-post-likes>div {
   display: flex;
   gap: 1rem;
 }
@@ -100,7 +100,7 @@
   margin-bottom: 1rem;
 }
 
-.other-posts-buttons > button {
+.other-posts-buttons>button {
   display: flex;
   border: none;
   width: 30%;
@@ -115,7 +115,7 @@
   gap: 0.6rem;
 }
 
-.other-posts-buttons > button:hover {
+.other-posts-buttons>button:hover {
   background-color: rgb(215, 215, 215);
   cursor: pointer;
 }
@@ -127,8 +127,8 @@
   gap: .3rem;
 }
 
-.other-post-comment-box > input {
-  width: 88%;
+.other-post-comment-box>form>input {
+  width: 31.5rem;
   border: none;
   background-color: rgb(240, 242, 245);
   height: 1.5rem;
@@ -136,6 +136,10 @@
   margin-bottom: .7rem;
   font-size: 1rem;
   padding: 0.3rem 0 0.3rem 0.3rem;
+}
+
+.other-post-comment-box>form>button {
+  font-family: 'FontAwesome', Arial;
 }
 
 .other-post-comments {
@@ -153,12 +157,12 @@
   border-radius: 10px;
   margin-bottom: .1rem;
   display: flex;
-  padding: .3rem .6rem .3rem ;
+  padding: .3rem .6rem .3rem;
   gap: .3rem;
   align-items: center;
 }
 
-.other-post-comments-header > span {
+.other-post-comments-header>span {
   display: flex;
   flex-direction: column;
 }
@@ -168,25 +172,25 @@
   font-weight: 600;
 }
 
-.other-post-like-share { 
+.other-post-like-share {
   margin-bottom: .5rem;
   display: flex;
   align-items: center;
 }
 
-.other-post-like-share > button { 
+.other-post-like-share>button {
   border: none;
   background-color: white;
   font-weight: 600;
 }
 
-.other-post-like-share > button:hover {
+.other-post-like-share>button:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
-.other-post-like-share > span {
+.other-post-like-share>span {
   color: rgb(128, 128, 128);
   font-size: 12px;
   margin-left: .7rem;
-} 
+}

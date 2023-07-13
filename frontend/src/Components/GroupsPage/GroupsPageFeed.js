@@ -4,7 +4,7 @@ import './GroupsPageFeed.css'
 function GroupsPageFeed() {
   return (
     <div className='groups-page-feed'>
-      FEED
+      <h3>Recent activity</h3>
     </div>
   )
 }
