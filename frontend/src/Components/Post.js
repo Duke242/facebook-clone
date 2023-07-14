@@ -5,13 +5,16 @@ import {
   FaEllipsisH, FaTimes, FaThumbsUp, FaComment, FaShare, FaUser
 } from 'react-icons/fa'
 
-
 function Post({
+  id,
   author,
   text,
   timestamp,
   likes,
+  comments
+
 }) {
+  console.log({ comments })
   return (
     <div>
       <div className='other-post-container'>
@@ -46,27 +49,31 @@ function Post({
         </div>
         <div className='other-post-comment-box'>
           <FaUserAlt size={25} />
-          <form method='post' action='/api/posts/comments'>
-            <input type='text' placeholder='Submit your first comment...' />
+          <form method='post' action={`/api/posts/${id}/comments`}>
+            <input type='text' placeholder='Submit your first comment...' name='text' />
             <button>&#xf061;</button>
           </form>
         </div>
         <div className='other-post-comments'>
-          <FaUserAlt size={25} />
-          <div>
-            <div className='other-post-comments-header'>
-              <span>
-                <span className='other-post-comments-author'>Other User</span>
-                This is another user comment
-              </span>
+          {comments?.map((comment) => (
+            <div key={comment._id}>
+              <FaUserAlt size={25} />
+              <div>
+                <div className='other-post-comments-header'>
+                  <span>
+                    <span className='other-post-comments-author'>{comment.author.firstName}</span>
+                    {comment.text}
+                  </span>
+                </div>
+                <div className='other-post-like-share'>
+                  <button>Like</button>
+                  <button>Reply</button>
+                  <button>Share</button>
+                  <span>53m</span>
+                </div>
+              </div>
             </div>
-            <div className='other-post-like-share'>
-              <button>Like</button>
-              <button>Reply</button>
-              <button>Share</button>
-              <span>53m</span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

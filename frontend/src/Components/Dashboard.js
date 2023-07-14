@@ -16,18 +16,15 @@ function Dashboard() {
       if (!response.ok) {
         throw new Error(`HTTP status ${response.status}`)
       }
-      // console.log({ json: await response.json() })
       return response.json()
     },
   })
   const user = response.data
-  console.log(user)
   const [createPost, setCreatePost] = useState(false)
 
   const togglePost = (e) => {
     e.preventDefault()
     setCreatePost(!createPost)
-    console.log('toggle post')
   };
 
   return (
@@ -42,7 +39,5 @@ function Dashboard() {
     </main>
   )
 }
-
-
 
 export default Dashboard

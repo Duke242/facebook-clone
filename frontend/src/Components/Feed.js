@@ -10,7 +10,6 @@ function Feed({ handlePopup }) {
 
 
   let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)sid\s*\=\s*([^;]*).*$)|^.*$/, "\$1");
-  console.log({ cookieValue })
 
   const response = useQuery({
     queryKey: ['posts'],
@@ -22,8 +21,6 @@ function Feed({ handlePopup }) {
       return response.json()
     },
   })
-  console.log({ response })
-  console.log({ ps: response.data })
 
   return (
     <div className='feed-container'>
@@ -65,11 +62,14 @@ function Feed({ handlePopup }) {
         }
         return response.data.map((post, idx) => (
           <Post
+            id={post._id}
             key={idx}
             text={post.text}
             author={post.author.firstName}
             timestamp={post.timestamp}
-            likes={post.likes} />
+            likes={post.likes}
+            comments={post.comments}
+          />
         ))
       })()}
     </div>

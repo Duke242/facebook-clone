@@ -1,0 +1,12 @@
+.all-users-container>ul>li {
+  list-style: none;
+  margin-top: 0;
+  width: fit-content;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 10px;
+}
+
+.all-users-container>h1 {
+  margin-left: 1rem;
+  text-decoration: underline;
+}

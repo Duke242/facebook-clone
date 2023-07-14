@@ -127,19 +127,39 @@
   gap: .3rem;
 }
 
+.other-post-comment-box>form {
+  display: flex;
+}
+
 .other-post-comment-box>form>input {
   width: 31.5rem;
   border: none;
   background-color: rgb(240, 242, 245);
   height: 1.5rem;
-  border-radius: 10px;
   margin-bottom: .7rem;
   font-size: 1rem;
   padding: 0.3rem 0 0.3rem 0.3rem;
+  border-radius: 10px 0 0 10px;
+}
+
+.other-post-comment-box>form>input:focus-visible {
+  outline: none;
 }
 
 .other-post-comment-box>form>button {
   font-family: 'FontAwesome', Arial;
+  background-color: rgb(240, 242, 245);
+  border: none;
+  height: 2.1rem;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.other-post-comment-box>form>button:hover {
+  cursor: pointer;
+  background-color: rgb(227, 227, 227);
+  transition: 0.2s;
+
+
 }
 
 .other-post-comments {

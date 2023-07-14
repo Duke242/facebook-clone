@@ -9,6 +9,7 @@ const session = require('express-session');
 const { v4: uuidv4 } = require('uuid');
 const isAuthorized = require('./middleware/isAuthorized');
 const cookieParser = require('cookie-parser');
+const { populate } = require('dotenv');
 
 app.use(cookieParser())
 app.use(express.json());
@@ -60,15 +61,15 @@ app.get('/dashboard', passport.authenticate('local', { session: false }), (req, 
 });
 
 app.get('/api/posts', async (req, res) => {
-  console.log('line 63')
   setup(mongoose)
   const Post = mongoose.model('post')
-  const posts = await Post.find()
-    .populate({
-      path: 'author',
-    });
-  console.log({ posts })
-  res.json(posts)
+  const posts = await Post.find({})
+    .populate('author')
+    .populate({ path: "comments", populate: { path: 'author' } })
+
+  console.log({ p: posts[0] })
+  const out = posts.map((post) => post.toJSON({ virtuals: true }))
+  res.json(out)
 })
 
 app.post('/api/users', async (req, res) => {
@@ -116,25 +117,50 @@ app.get(
       delete out.password
       res.json(out)
     }
-
-    // passport.authenticate("local", (err, user, info) => {
-    //   if (err) {
-    //     return next(err);
-    //   }
-    //   console.log({ user, info })
-
-    //   if (!user) {
-    //     return res.redirect("/login");
-    //   }
-    //   req.logIn(user, (err) => {
-    //     if (err) {
-    //       return next(err);
-    //     }
-    //     const returnTo = req.session.returnTo;
-    //     delete req.session.returnTo;
-    //     res.redirect(returnTo || "/");
-    //   });
-    // })(req, res, next);
   }
 )
+
+app.post('/api/posts/:id/comments', async (req, res) => {
+  setup(mongoose)
+  const Comment = mongoose.model('comment')
+  const { text } = req.body
+  const newComment = new Comment({
+    author: req.cookies.userId,
+    text,
+    post: req.params.id,
+  })
+  console.log({
+    author: req.cookies.userId,
+    text,
+    post: req.params.id,
+  })
+  await newComment.save()
+  res.redirect('/dashboard')
+
+})
+
+app.get('/api/users', async (req, res) => {
+  setup(mongoose)
+  const User = mongoose.model('user')
+  const users = await User.find()
+  res.json(users)
+
+})
+
+
+app.post('/api/users/:id/requests', async (req, res) => {
+  setup(mongoose)
+  const User = mongoose.model('user')
+  const FriendRequest = mongoose.model('friendRequest')
+  const currentUser = await User.findById(req.cookies.userId)
+  console.log(currentUser)
+  const request = new FriendRequest({ to: req.body.friendId, from: currentUser })
+  await request.save()
+  res.redirect('/dashboard')
+})
+
+// list friend requests 
+// if accept => push to opposite users into friend array for both from and to user 
+
+
 

@@ -1,14 +1,18 @@
 import React from 'react'
 import './Sidebar.css'
+import { useNavigate } from 'react-router'
+
 
 function Sidebar({ user }) {
+
+  const navigate = useNavigate()
 
   console.log(user)
   return (
     <div className='sidebar-container'>
       <ul className='sidebar-list'>
         <li className='sidebar-li'>{user?.firstName} {user?.lastName}</li>
-        <li className='sidebar-li'>Find friends</li>
+        <li className='sidebar-li' onClick={() => { navigate('/allUsers') }}>Find friends</li>
         <li className='sidebar-li'>Feeds (Most Recent)</li>
         <li className='sidebar-li'>Welcome</li>
         <li className='sidebar-li'>Groups</li>
