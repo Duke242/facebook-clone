@@ -30,7 +30,6 @@ function AllUsers() {
     },
   })
 
-  // console.log(response)
   const users = response.data
   return (
     <div className='all-users-container'>

@@ -33,7 +33,7 @@ app.use(session({
 
 app.get('/forgotPassword', (req, res) => {
   res.json({ msg: "Make a new account" })
-  console.log('json')
+  // console.log('json')
 })
 
 app.listen(3002, () => [
@@ -46,17 +46,13 @@ app.post('/api/login', passport.authenticate("local", {
   failureRedirect: "/?msg=Login%20Failed",
 }),
   (req, res) => {
-    console.log(req.user)
+    // console.log(req.user)
     res.cookie('userId', req.user.id, { maxAge: 2592000000 }); // Expires in one month
     res.redirect('/dashboard')
   }
 );
 
 app.get('/dashboard', passport.authenticate('local', { session: false }), (req, res) => {
-  // Only authenticated users can access this route
-  // Implement your own logic to handle the request
-  console.log('authenticated')
-  console.log(req.user)
   res.redirect('/dashboard');
 });
 
@@ -66,9 +62,8 @@ app.get('/api/posts', async (req, res) => {
   const posts = await Post.find({})
     .populate('author')
     .populate({ path: "comments", populate: { path: 'author' } })
-
-  console.log({ p: posts[0] })
   const out = posts.map((post) => post.toJSON({ virtuals: true }))
+  console.log({ out })
   res.json(out)
 })
 
@@ -96,7 +91,7 @@ app.post('/api/users', async (req, res) => {
 })
 
 app.post('/api/posts', async (req, res) => {
-  console.log(req.session)
+  // console.log(req.session)
   const Post = mongoose.model('post')
   const { text } = req.body
   const newPost = new Post({
@@ -129,14 +124,8 @@ app.post('/api/posts/:id/comments', async (req, res) => {
     text,
     post: req.params.id,
   })
-  console.log({
-    author: req.cookies.userId,
-    text,
-    post: req.params.id,
-  })
   await newComment.save()
   res.redirect('/dashboard')
-
 })
 
 app.get('/api/users', async (req, res) => {
@@ -144,20 +133,38 @@ app.get('/api/users', async (req, res) => {
   const User = mongoose.model('user')
   const users = await User.find()
   res.json(users)
-
 })
-
 
 app.post('/api/users/:id/requests', async (req, res) => {
   setup(mongoose)
   const User = mongoose.model('user')
   const FriendRequest = mongoose.model('friendRequest')
   const currentUser = await User.findById(req.cookies.userId)
-  console.log(currentUser)
+  if (currentUser._id.toString() === req.body.friendId) {
+    return res.json('Friend request can not be sent to self')
+  }
   const request = new FriendRequest({ to: req.body.friendId, from: currentUser })
   await request.save()
   res.redirect('/dashboard')
 })
+
+app.get('/api/users/friendRequests', async (req, res) => {
+  setup(mongoose)
+  const User = mongoose.model('user')
+  const user = await User.findById(req.cookies.userId)
+    .populate('incomingRequests')
+    .populate({ path: 'incomingRequests' })
+  console.log({ 1: user })
+  const out = user.incomingRequests.map((user) => {
+    user.toJSON({ virtuals: true })
+  })
+  console.log({ out })
+  res.json(user)
+})
+
+// const out = posts.map((post) => post.toJSON({ virtuals: true }))
+// const user = await User.findById(userId);
+// const userJson = user.toJSON({ virtuals: true });
 
 // list friend requests 
 // if accept => push to opposite users into friend array for both from and to user 

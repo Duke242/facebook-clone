@@ -15,16 +15,18 @@ function setup(mongoose) {
       password: { type: String, required: true },
       birthday: { type: Date, required: true },
       gender: { type: String, required: false },
-      friends: [{ type: Schema.Types.ObjectId, ref: "user", required: false }]
-    });
+      friends: [{ type: Schema.Types.ObjectId, ref: "user", required: false }],
+    },
+      {
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true }
+      });
 
   const FriendRequestSchema =
     new Schema({
       from: { type: Schema.Types.ObjectId, ref: "user", required: true },
       to: { type: Schema.Types.ObjectId, ref: "user", required: true },
     })
-
-
 
   const PostSchema =
     new Schema({
@@ -49,6 +51,9 @@ function setup(mongoose) {
 
   mongoose.models = {};
   const Comment = mongoose.model('comment', CommentSchema)
+  const friendRequest = mongoose.model('friendRequest', FriendRequestSchema)
+  mongoose.model('user', UserSchema)
+  mongoose.model('post', PostSchema)
 
   PostSchema.virtual('comments', {
     ref: 'comment',
@@ -56,19 +61,23 @@ function setup(mongoose) {
     foreignField: 'post',
   });
 
-  UserSchema.virtual('requests', {
+  UserSchema.virtual('incomingRequests', {
     ref: 'friendRequest',
     localField: '_id',
     foreignField: 'to',
   });
 
-  mongoose.model('friendRequest', FriendRequestSchema)
-  mongoose.model('user', UserSchema)
-  mongoose.model('post', PostSchema)
-  console.log('Comment model')
+  UserSchema.virtual('outgoingRequests', {
+    ref: 'friendRequest',
+    localField: '_id',
+    foreignField: 'from',
+  })
 
+  UserSchema.set('toJSON', { virtuals: true })
+  UserSchema.set('toObject', { virtuals: true })
 
-
+  //circleSchema.set('toObject', { virtuals: true });
+  // circleSchema.set('toJSON', { virtuals: true });
 }
 
 module.exports = { setup }
