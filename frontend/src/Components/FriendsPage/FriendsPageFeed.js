@@ -16,7 +16,15 @@ function FriendsPageFeed() {
     },
   })
 
-  console.log({ r: response.data })
+  const deleteRequest = () => {
+
+  }
+
+  // console.log(response.json())
+  // console.log({ r: response })
+  // console.log({ o: Object.keys(response.data) })
+  console.log({ 8: response.data })
+  // console.log({ r: response.data[0] })
 
   return (
     <div className='friends-page-feed'>
@@ -30,15 +38,24 @@ function FriendsPageFeed() {
         if (response.data.length === 0) {
           return <p>When you have friend requests or suggestions, you'll see them here.</p>
         }
-        // return response.data.id.map((request, idx) => (
-        //   <div key={idx}>
-        //     {request}
-        //   </div>
-        // ))
-        return <div>{response.data.id}</div>
+        return response.data.map((request, idx, _id) => (
+          <div className='friend-req-div' key={idx}>
+            {console.log({ i: request._id })}
+            From: {request.from.firstName} {request.from.lastName}<br />
+            To: {request.to.firstName} {request.to.lastName}
+            <button>Accept</button>
+            <form method='delete' action={`/api/friendRequests/delete/${request._id}`}>
+              <button>Decline</button>
+            </form>
+          </div>
+        ))
+        // return <div>{response.data.id}</div>
       })()}
-    </div>
+    </div >
   )
 }
-
+// <form method='post' action={`/api/posts/${id}/comments`}>
+// <input type='text' placeholder='Submit your first comment...' name='text' />
+// <button>&#xf061;</button>
+// </form>
 export default FriendsPageFeed

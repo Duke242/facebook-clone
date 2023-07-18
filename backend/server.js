@@ -7,7 +7,6 @@ const { setup } = require('./models/mongoose');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const { v4: uuidv4 } = require('uuid');
-const isAuthorized = require('./middleware/isAuthorized');
 const cookieParser = require('cookie-parser');
 const { populate } = require('dotenv');
 
@@ -149,25 +148,51 @@ app.post('/api/users/:id/requests', async (req, res) => {
 })
 
 app.get('/api/users/friendRequests', async (req, res) => {
-  setup(mongoose)
-  const User = mongoose.model('user')
-  const user = await User.findById(req.cookies.userId)
-    .populate('incomingRequests')
-    .populate({ path: 'incomingRequests' })
-  console.log({ 1: user })
-  const out = user.incomingRequests.map((user) => {
-    user.toJSON({ virtuals: true })
-  })
-  console.log({ out })
-  res.json(user)
+  try {
+    const User = mongoose.model('user');
+    const user = await User.findById(req.cookies.userId)
+      .populate('incomingRequests')
+      .populate({
+        path: 'incomingRequests',
+        populate: {
+          path: 'from',
+          model: 'user'
+        }
+      })
+      .populate({
+        path: 'incomingRequests',
+        populate: {
+          path: 'to',
+          model: 'user'
+        }
+      });
+
+    // console.log({ u: user.incomingRequest });
+
+    const out = user.incomingRequests.map((incomingRequest) => {
+      return incomingRequest.toJSON({ virtuals: true })
+    })
+
+    console.log({ out });
+
+    res.json(out);
+  }
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
 })
 
-// const out = posts.map((post) => post.toJSON({ virtuals: true }))
-// const user = await User.findById(userId);
-// const userJson = user.toJSON({ virtuals: true });
-
-// list friend requests 
-// if accept => push to opposite users into friend array for both from and to user 
-
-
-
+app.delete('/api/friendRequests/delete/:id', async (req, res) => {
+  try {
+    setup(mongoose)
+    const FriendRequest = mongoose.model('FriendRequest')
+    console.log({ BODT: req.params.id })
+    FriendRequest.deleteOne(req.params.id)
+    res.redirect('/friends')
+  }
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+})
