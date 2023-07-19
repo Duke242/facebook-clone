@@ -200,14 +200,25 @@ app.delete('/api/friendRequests/delete/:id', async (req, res) => {
   }
 })
 
-app.post('/api/friendRequests/add/:id', async (req, res) => {
-  console.log('POSfriend')
+app.post('/api/friendRequests/add', async (req, res) => {
+  const User = mongoose.model('user');
+  const friendRequest = mongoose.model('friendRequest')
   try {
-    setup(mongoose)
-    const FriendRequest = mongoose.model('friendRequest')
+    const user = await User.findById(req.body.userId);
+    const friend = await User.findById(req.body.friendId);
+    if (!user) {
+      console.log('User not found.');
+      return;
+    }
+    friend.friends.push(req.body.userId)
+    user.friends.push(req.body.friendId);
+    await user.save();
+    await friend.save()
+    await friendRequest.deleteOne({ _id: req.body.friendRequestId })
+    console.log('Friend added successfully.');
+    res.redirect('/friends');
+  } catch (error) {
+    console.error('Error adding friend:', error);
   }
-  catch (error) {
-    console.error(error)
-    res.status(500).json({ error: 'Server error' })
-  }
+
 })

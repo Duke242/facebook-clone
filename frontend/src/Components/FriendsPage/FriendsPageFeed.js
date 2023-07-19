@@ -43,8 +43,10 @@ function FriendsPageFeed() {
             {console.log({ i: request._id })}
             From: {request.from.firstName} {request.from.lastName}<br />
             To: {request.to.firstName} {request.to.lastName}
-            <form method='POST' action={`/api/friendRequests/add/${request._id}`}>
-              <input type='hidden' name='' />
+            <form method='POST' action='/api/friendRequests/add/'>
+              <input type='hidden' name='friendId' value={request.from._id} />
+              <input type='hidden' name='userId' value={request.to._id} />
+              <input type='hidden' name='friendRequestId' value={request._id} />
               <button>Accept</button>
             </form>
             <form method='POST' action={`/api/friendRequests/delete/${request._id}`}>
