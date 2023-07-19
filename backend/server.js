@@ -8,11 +8,20 @@ const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const { v4: uuidv4 } = require('uuid');
 const cookieParser = require('cookie-parser');
-const { populate } = require('dotenv');
+const methodOverride = require('method-override')
+
 
 app.use(cookieParser())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(methodOverride((req, res) => {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    var method = req.body._method
+    delete req.body._method
+    return method
+  }
+}))
 
 const maxAge = 1000 * 60 * 60 * 24 // 24 Hours in ms
 
@@ -32,7 +41,6 @@ app.use(session({
 
 app.get('/forgotPassword', (req, res) => {
   res.json({ msg: "Make a new account" })
-  // console.log('json')
 })
 
 app.listen(3002, () => [
@@ -45,7 +53,6 @@ app.post('/api/login', passport.authenticate("local", {
   failureRedirect: "/?msg=Login%20Failed",
 }),
   (req, res) => {
-    // console.log(req.user)
     res.cookie('userId', req.user.id, { maxAge: 2592000000 }); // Expires in one month
     res.redirect('/dashboard')
   }
@@ -62,7 +69,6 @@ app.get('/api/posts', async (req, res) => {
     .populate('author')
     .populate({ path: "comments", populate: { path: 'author' } })
   const out = posts.map((post) => post.toJSON({ virtuals: true }))
-  console.log({ out })
   res.json(out)
 })
 
@@ -90,7 +96,6 @@ app.post('/api/users', async (req, res) => {
 })
 
 app.post('/api/posts', async (req, res) => {
-  // console.log(req.session)
   const Post = mongoose.model('post')
   const { text } = req.body
   const newPost = new Post({
@@ -167,13 +172,11 @@ app.get('/api/users/friendRequests', async (req, res) => {
         }
       });
 
-    // console.log({ u: user.incomingRequest });
 
     const out = user.incomingRequests.map((incomingRequest) => {
       return incomingRequest.toJSON({ virtuals: true })
     })
 
-    console.log({ out });
 
     res.json(out);
   }
@@ -184,15 +187,27 @@ app.get('/api/users/friendRequests', async (req, res) => {
 })
 
 app.delete('/api/friendRequests/delete/:id', async (req, res) => {
+  console.log('DELETE')
   try {
     setup(mongoose)
-    const FriendRequest = mongoose.model('FriendRequest')
-    console.log({ BODT: req.params.id })
-    FriendRequest.deleteOne(req.params.id)
+    const FriendRequest = mongoose.model('friendRequest')
+    await FriendRequest.deleteOne({ _id: req.params.id })
     res.redirect('/friends')
   }
   catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Server error' });
+  }
+})
+
+app.post('/api/friendRequests/add/:id', async (req, res) => {
+  console.log('POSfriend')
+  try {
+    setup(mongoose)
+    const FriendRequest = mongoose.model('friendRequest')
+  }
+  catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Server error' })
   }
 })
