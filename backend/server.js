@@ -62,15 +62,26 @@ app.get('/dashboard', passport.authenticate('local', { session: false }), (req, 
   res.redirect('/dashboard');
 });
 
+
 app.get('/api/posts', async (req, res) => {
-  setup(mongoose)
-  const Post = mongoose.model('post')
-  const posts = await Post.find({})
-    .populate('author')
-    .populate({ path: "comments", populate: { path: 'author' } })
-  const out = posts.map((post) => post.toJSON({ virtuals: true }))
-  res.json(out)
-})
+  try {
+    setup(mongoose);
+    const Post = mongoose.model('post');
+    const posts = await Post.find({})
+      .populate({
+        path: 'comments',
+        // Get friends of friends - populate the 'friends' array for every friend
+        populate: { path: 'author' }
+      });
+    const out = posts.map((post) => post.toJSON({ virtuals: true }));
+    console.log({ out });
+    res.json(out);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 
 app.post('/api/users', async (req, res) => {
   setup(mongoose)

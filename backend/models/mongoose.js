@@ -34,7 +34,10 @@ function setup(mongoose) {
       author: { type: Schema.Types.ObjectId, ref: 'user', required: true },
       likes: { type: Number, default: 0, required: true },
       // comments: [{ type: Schema.Types.ObjectId, ref: "comment" }],
-    }, { timestamps: true })
+    }, {
+      timestamps: true,
+      toJSON: { virtuals: true }
+    })
 
 
   const CommentSchema =
@@ -49,17 +52,19 @@ function setup(mongoose) {
 
     })
 
+  PostSchema.virtual('comments', {
+    ref: 'comment',
+    localField: '_id',
+    foreignField: 'post',
+  });
+
   mongoose.models = {};
   const Comment = mongoose.model('comment', CommentSchema)
   const friendRequest = mongoose.model('friendRequest', FriendRequestSchema)
   mongoose.model('user', UserSchema)
   mongoose.model('post', PostSchema)
 
-  PostSchema.virtual('comments', {
-    ref: 'comment',
-    localField: '_id',
-    foreignField: 'post',
-  });
+
 
   UserSchema.virtual('incomingRequests', {
     ref: 'friendRequest',
@@ -75,6 +80,8 @@ function setup(mongoose) {
 
   UserSchema.set('toJSON', { virtuals: true })
   UserSchema.set('toObject', { virtuals: true })
+  PostSchema.set('toJSON', { virtuals: true })
+  PostSchema.set('toObject', { virtuals: true })
 
   //circleSchema.set('toObject', { virtuals: true });
   // circleSchema.set('toJSON', { virtuals: true });

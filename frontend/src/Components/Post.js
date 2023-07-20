@@ -55,25 +55,26 @@ function Post({
           </form>
         </div>
         <div className='other-post-comments'>
-          {comments?.map((comment) => (
-            <div key={comment._id}>
-              <FaUserAlt size={25} />
-              <div>
-                <div className='other-post-comments-header'>
-                  <span>
-                    <span className='other-post-comments-author'>{comment.author.firstName}</span>
-                    {comment.text}
-                  </span>
-                </div>
-                <div className='other-post-like-share'>
-                  <button>Like</button>
-                  <button>Reply</button>
-                  <button>Share</button>
-                  <span>53m</span>
+          {
+            comments?.map((comment) => (
+              <div key={comment._id}>
+                <FaUserAlt size={25} />
+                <div>
+                  <div className='other-post-comments-header'>
+                    <span>
+                      <span className='other-post-comments-author'>{comment.author?.firstName}</span>
+                      {comment.text}
+                    </span>
+                  </div>
+                  <div className='other-post-like-share'>
+                    <button>Like</button>
+                    <button>Reply</button>
+                    <button>Share</button>
+                    <span>53m</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>

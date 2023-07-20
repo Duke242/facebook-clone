@@ -22,6 +22,8 @@ function Feed({ handlePopup }) {
     },
   })
 
+
+  console.log({ rresp: response.data })
   return (
     <div className='feed-container'>
       <div className='create-story'>
